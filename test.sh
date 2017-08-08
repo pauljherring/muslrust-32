@@ -11,8 +11,8 @@ docker_build() {
     -t clux/muslrust \
     cargo build --verbose
   cd "test/${crate}"
-  ./target/x86_64-unknown-linux-musl/debug/"${crate}"
-  [[ "$(ldd target/x86_64-unknown-linux-musl/debug/${crate})" =~ "not a dynamic" ]] && \
+  ./target/i686-unknown-linux-musl/debug/"${crate}"
+  [[ "$(ldd target/i686-unknown-linux-musl/debug/${crate})" =~ "not a dynamic" ]] && \
     echo "${crate} is a static executable"
 }
 

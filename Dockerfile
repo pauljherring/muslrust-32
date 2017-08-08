@@ -22,7 +22,7 @@ RUN curl https://static.rust-lang.org/rustup.sh | sh -s -- \
   --with-target=i686-unknown-linux-musl \
   --yes \
   --disable-sudo \
-  --channel=stable && \
+  --revision=1.18.0 && \
   mkdir /.cargo && \
   echo "[build]\ntarget = \"i686-unknown-linux-musl\"" > /.cargo/config
 
