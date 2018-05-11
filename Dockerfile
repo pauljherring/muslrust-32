@@ -22,7 +22,7 @@ RUN curl https://static.rust-lang.org/rustup.sh | sh -s -- \
   --with-target=i686-unknown-linux-musl \
   --yes \
   --disable-sudo \
-  --revision=1.18.0 && \
+  --revision=1.26.0 && \
   mkdir /.cargo && \
   echo "[build]\ntarget = \"i686-unknown-linux-musl\"" > /.cargo/config
 
@@ -36,7 +36,7 @@ ENV SSL_VER=1.0.2j \
 
 RUN curl -sL http://www.openssl.org/source/openssl-$SSL_VER.tar.gz | tar xz && \
     cd openssl-$SSL_VER && \
-    ./Configure no-shared --prefix=$PREFIX --openssldir=$PREFIX/ssl no-zlib -m32 linux-generic32 -fPIC -fno-stack-protector && \
+    ./Configure no-shared --prefix=$PREFIX --openssldir=$PREFIX/ssl no-zlib -m32 linux-elf -fPIC -fno-stack-protector && \
     make depend 2> /dev/null && make -j$(nproc) && make install && \
     cd .. && rm -rf openssl-$SSL_VER
 
