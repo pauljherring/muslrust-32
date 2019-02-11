@@ -18,13 +18,16 @@ RUN apt-get update && apt-get install -y \
   --no-install-recommends && \
   rm -rf /var/lib/apt/lists/*
 
-RUN curl https://static.rust-lang.org/rustup.sh | sh -s -- \
-  --with-target=i686-unknown-linux-musl \
-  --yes \
-  --disable-sudo \
-  --revision=1.27.0 && \
+RUN curl https://sh.rustup.rs -sSf | sh -s -- \
+  --default-toolchain 1.27.0 \
+  -y && \
   mkdir /.cargo && \
   echo "[build]\ntarget = \"i686-unknown-linux-musl\"" > /.cargo/config
+
+ENV PATH=/root/.cargo/bin:$PATH
+
+RUN rustup target add i686-unknown-linux-musl
+
 
 # Compile C libraries with musl-gcc
 ENV SSL_VER=1.0.2j \
