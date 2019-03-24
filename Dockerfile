@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- \
   --default-toolchain 1.27.0 \
+  --default-host i686-unknown-linux-gnu\
   -y && \
   mkdir /.cargo && \
   echo "[build]\ntarget = \"i686-unknown-linux-musl\"" > /.cargo/config
