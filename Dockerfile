@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
   rm -rf /var/lib/apt/lists/*
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- \
-  --default-toolchain 1.27.0 \
+  --default-toolchain 1.43.1 \
   --default-host i686-unknown-linux-gnu\
   -y && \
   mkdir /.cargo && \
